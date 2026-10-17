@@ -224,6 +224,22 @@ button{font:inherit;color:inherit}
 .review cite{font-style:normal;font-weight:800;display:block}
 .review small{color:var(--muted);font-weight:600}
 .review footer{margin-top:auto}
+.review.review--ya::before{display:none}
+.review--ya{gap:12px}
+.ya-head{display:flex;align-items:center;gap:12px}
+.ya-ava{flex:0 0 44px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:.95rem;letter-spacing:.02em}
+.ya-ava--emoji{font-size:1.45rem}
+.ya-head cite{font-style:normal;font-weight:800;display:block;line-height:1.25}
+.ya-meta{display:block;color:var(--muted);font-size:.82rem;font-weight:600}
+.ya-rate{display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;font-size:.85rem;color:var(--muted)}
+.ya-stars{color:#FFCC00;letter-spacing:.08em;font-size:1rem;line-height:1}
+.review--ya blockquote{white-space:pre-line}
+.ya-foot{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:.82rem;color:var(--muted);margin-top:auto}
+.ya-ok{color:#3BB54A;font-weight:600}
+.ya-ok::before{content:"✓ "}
+.ya-like{border:1px solid currentColor;border-radius:8px;padding:2px 8px;opacity:.85}
+.ya-source{display:flex;align-items:center;gap:8px;margin:10px 0 0;color:var(--muted);font-size:.9rem;font-weight:600}
+.ya-badge{width:22px;height:22px;border-radius:50%;background:#FC3F1D;color:#fff;display:grid;place-items:center;font-size:.8rem;font-weight:800}
 
 /* ============ СЕРТИФИКАТЫ (тёмная) ============ */
 .certs{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,70px);align-items:center}
@@ -790,32 +806,51 @@ body{background:var(--bg);color:var(--text)}
     <div class="sec-head">
       <div class="eyebrow">Отзывы</div>
       <h2 class="sec-title" id="reviews-t">Говорят клиенты</h2>
+      <p class="ya-source"><span class="ya-badge" aria-hidden="true">Я</span>Отзывы с Яндекс Карт без правок</p>
     </div>
     <div class="reviews">
-      <article class="card review">
-        <div class="review__stars" role="img" aria-label="Оценка 5 из 5">★★★★★</div>
+      <article class="card review review--ya">
+        <header class="ya-head">
+          <span class="ya-ava" style="background:#5BB85D" aria-hidden="true">Е</span>
+          <div><cite>Екатерина</cite><span class="ya-meta">1 отзыв</span></div>
+        </header>
+        <div class="ya-rate"><span class="ya-stars" role="img" aria-label="Оценка 5 из 5">★★★★★</span><time datetime="2026-08-17">17 августа 2026, изменён</time></div>
+        <blockquote>Приятная атмосфера,всегда предлагают чай и кофе,для мужчин даже покрепче)все мастера хорошие,стригут на 5+.Мужу очень нравится 👍</blockquote>
+        <footer class="ya-foot"><span>2 посещения</span><span class="ya-ok">Отзыв подтверждён</span></footer>
+      </article>
+      <article class="card review review--ya">
+        <header class="ya-head">
+          <span class="ya-ava" style="background:#2E8BFF" aria-hidden="true">АК</span>
+          <div><cite>Александр К.</cite><span class="ya-meta">5 отзывов</span></div>
+        </header>
+        <div class="ya-rate"><span class="ya-stars" role="img" aria-label="Оценка 5 из 5">★★★★★</span><time datetime="2026-08-09">9 августа 2026</time></div>
         <blockquote>Хочу поблагодарить барбера Анастасию за отличную работу! Очень понравился индивидуальный подход — Анастасия внимательно выслушала мои пожелания, подсказала, как будет лучше, и в итоге получилась именно та стрижка, которую я хотел. Видно, что человек действительно любит свою работу и внимательно относится к деталям. Всё аккуратно, профессионально и без спешки. Остался очень доволен результатом, обязательно приду ещё!</blockquote>
-        <footer><cite>Александр К.</cite><small>Яндекс Карты</small></footer>
+        <footer class="ya-foot"><span>1 посещение</span><span class="ya-ok">Отзыв подтверждён</span></footer>
       </article>
-      <article class="card review">
-        <div class="review__stars" role="img" aria-label="Оценка 5 из 5">★★★★★</div>
-        <blockquote>Сто лет не был в салоне, сто первый год показал что есть хороший салон, и в нём работает мастер Рита, Рита, классный мастер, с оочень острым пониманием к желанию клиента, сделает то что вам видется и нравится, только намного лучше</blockquote>
-        <footer><cite>Евгений Г.</cite><small>Яндекс Карты</small></footer>
+      <article class="card review review--ya">
+        <header class="ya-head">
+          <span class="ya-ava ya-ava--emoji" style="background:#D9E6E3" aria-hidden="true">👽</span>
+          <div><cite>Евгений Г.</cite><span class="ya-meta">Знаток города 10 уровня</span></div>
+        </header>
+        <div class="ya-rate"><span class="ya-stars" role="img" aria-label="Оценка 5 из 5">★★★★★</span><time datetime="2026-08-11">11 августа</time></div>
+        <blockquote>Сто лет не был в салоне, сто первый год показал что есть хороший салон, и в нём работает мастер Рита, 😊💥🔥💥☝, Рита, классный мастер🔥😊, с оочень острым пониманием к желанию клиента, сделает то что вам видется и нравится, только намного лучше😊👍🍖</blockquote>
       </article>
-      <article class="card review">
-        <div class="review__stars" role="img" aria-label="Оценка 5 из 5">★★★★★</div>
+      <article class="card review review--ya">
+        <header class="ya-head">
+          <span class="ya-ava ya-ava--emoji" style="background:#F6E7C8" aria-hidden="true">🐻</span>
+          <div><cite>Владимир А.</cite><span class="ya-meta">Знаток города 6 уровня</span></div>
+        </header>
+        <div class="ya-rate"><span class="ya-stars" role="img" aria-label="Оценка 5 из 5">★★★★★</span><time datetime="2026-07-06">6 июля</time></div>
         <blockquote>Был первый раз . Остался довольный . Атмосфера располагает . Мастер Ольга просто супер , на высшем уровне . Рекомендую .</blockquote>
-        <footer><cite>Владимир А.</cite><small>Яндекс Карты</small></footer>
       </article>
-      <article class="card review">
-        <div class="review__stars" role="img" aria-label="Оценка 5 из 5">★★★★★</div>
-        <blockquote>Приятная атмосфера,всегда предлагают чай и кофе,для мужчин даже покрепче).все мастера хорошие,стригут на 5+.Мужу очень нравится</blockquote>
-        <footer><cite>Екатерина</cite><small>Яндекс Карты</small></footer>
-      </article>
-      <article class="card review">
-        <div class="review__stars" role="img" aria-label="Оценка 5 из 5">★★★★★</div>
-        <blockquote>Хорошее место, стригу сына, все нравится</blockquote>
-        <footer><cite>Наталья Ф.</cite><small>Яндекс Карты</small></footer>
+      <article class="card review review--ya">
+        <header class="ya-head">
+          <span class="ya-ava" style="background:#2E8BFF" aria-hidden="true">НФ</span>
+          <div><cite>Наталья Ф.</cite><span class="ya-meta">2 отзыва</span></div>
+        </header>
+        <div class="ya-rate"><span class="ya-stars" role="img" aria-label="Оценка 5 из 5">★★★★★</span><time datetime="2026-08-17">17 августа 2026</time></div>
+        <blockquote>Хорошее место, стригу сына, все нравится 👍</blockquote>
+        <footer class="ya-foot"><span class="ya-like" aria-label="1 отметка «полезно»">💚 1</span></footer>
       </article>
     </div>
   </div>
