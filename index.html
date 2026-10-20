@@ -601,12 +601,14 @@ body{background:var(--bg);color:var(--text)}
 /* мобильный: инструменты парят вокруг логотипа, в пределах первого экрана */
 .hero{padding-bottom:48px}
 .tool{opacity:1}
-.t-miz{left:-14px;right:auto;top:8px;bottom:auto;width:104px}
-.t-thin{right:-14px;left:auto;top:10px;bottom:auto;width:104px}
-.t-wahlred{left:10px;right:auto;top:112px;bottom:auto;width:34px;opacity:.9}
-.t-wahlblk{right:4px;left:auto;top:128px;bottom:auto;width:74px}
-.t-razor{left:62px;right:auto;top:196px;bottom:auto;width:66px}
-.tool--far.t-spray{display:block;right:70px;left:auto;top:204px;bottom:auto;width:24px;opacity:.7}
+/* позиции считаются от центра логотипа (50%), max(8px,…) держит каждый инструмент внутри экрана */
+.tools{overflow:hidden}
+.t-miz{left:max(8px,calc(50% - 150px));right:auto;top:10px;bottom:auto;width:92px}
+.t-thin{right:max(8px,calc(50% - 150px));left:auto;top:12px;bottom:auto;width:92px}
+.t-wahlred{left:max(8px,calc(50% - 146px));right:auto;top:96px;bottom:auto;width:32px;opacity:.9}
+.t-wahlblk{right:max(8px,calc(50% - 162px));left:auto;top:116px;bottom:auto;width:68px}
+.t-razor{left:max(8px,calc(50% - 124px));right:auto;top:184px;bottom:auto;width:60px}
+.tool--far.t-spray{display:block;right:max(30px,calc(50% - 116px));left:auto;top:190px;bottom:auto;width:22px;opacity:.7}
 }
 .hero h1{font-size:clamp(1.9rem,4.1vw,3.7rem)}
 .hero h1 em{display:inline}
