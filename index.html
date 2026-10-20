@@ -518,6 +518,49 @@ body{background:var(--bg);color:var(--text)}
 .btn--ghost:hover{background:var(--text);color:#121212}
 .btn--dark{background:var(--pine);color:var(--text)}
 .btn--dark:hover{background:#34594C}
+/* кнопка записи: бегущий блик по рамке, бордовый как у машинки Wahl */
+@property --sh-angle{syntax:"<angle>";initial-value:0deg;inherits:false}
+@property --sh-pct{syntax:"<percentage>";initial-value:6%;inherits:false}
+.btn.btn--shiny{
+  --sh-bg:#141010;--sh-wine:#5A1E24;--sh-hl:#B8283E;--sh-hl-soft:#E8798A;
+  position:relative;isolation:isolate;overflow:hidden;color:#F1EEE8;
+  border:2px solid transparent;
+  background:
+    linear-gradient(var(--sh-bg),var(--sh-bg)) padding-box,
+    conic-gradient(from var(--sh-angle),
+      var(--sh-wine),var(--sh-hl) var(--sh-pct),var(--sh-hl-soft) calc(var(--sh-pct)*2),
+      var(--sh-hl) calc(var(--sh-pct)*3),var(--sh-wine) calc(var(--sh-pct)*4)) border-box;
+  box-shadow:inset 0 0 0 1px rgba(90,30,36,.55),0 6px 22px rgba(184,40,62,.22);
+  animation:sh-spin 3.2s linear infinite;
+  transition:transform .25s,box-shadow .25s,--sh-pct .4s;
+}
+/* точки внутри */
+.btn.btn--shiny::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle at 2px 2px,rgba(232,121,138,.22) .7px,transparent 1.2px) 0 0/6px 6px;
+  -webkit-mask:radial-gradient(ellipse 70% 90% at 50% 50%,#000 30%,transparent 80%);
+          mask:radial-gradient(ellipse 70% 90% at 50% 50%,#000 30%,transparent 80%);
+  opacity:.7;
+}
+/* бордовое свечение снизу */
+.btn.btn--shiny::after{
+  content:"";position:absolute;left:10%;right:10%;bottom:-60%;height:100%;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 0%,rgba(184,40,62,.55),rgba(184,40,62,0) 70%);
+  filter:blur(10px);opacity:.75;transition:opacity .3s,bottom .3s;
+}
+.btn.btn--shiny:hover{
+  background:
+    linear-gradient(var(--sh-bg),var(--sh-bg)) padding-box,
+    conic-gradient(from var(--sh-angle),
+      var(--sh-wine),var(--sh-hl) var(--sh-pct),var(--sh-hl-soft) calc(var(--sh-pct)*2),
+      var(--sh-hl) calc(var(--sh-pct)*3),var(--sh-wine) calc(var(--sh-pct)*4)) border-box;
+  --sh-pct:12%;transform:translateY(-2px);
+  box-shadow:inset 0 0 0 1px rgba(90,30,36,.55),0 10px 30px rgba(184,40,62,.38);
+}
+.btn.btn--shiny:hover::after{opacity:1;bottom:-45%}
+.btn.btn--shiny:focus-visible{outline:2px solid var(--sh-hl-soft);outline-offset:3px}
+@keyframes sh-spin{to{--sh-angle:360deg}}
+@media (prefers-reduced-motion:reduce){.btn.btn--shiny{animation:none}}
 .tab{border-color:rgba(232,227,218,.35)}
 .tab:hover{background:rgba(232,227,218,.08)}
 .tab[aria-selected="true"]{background:var(--amber);border-color:var(--amber);color:#121212}
@@ -665,7 +708,7 @@ body{background:var(--bg);color:var(--text)}
       </ul>
     </nav>
     <a class="header__phone" data-tel href="tel:+79814670105" data-cfg="PHONE_DISPLAY">27-01-05</a>
-    <a class="btn btn--primary btn--sm header__cta" data-href="BOOKING_URL" href="https://n689385.yclients.com/company/651411/personal/select-services" target="_blank" rel="noopener">Записаться</a>
+    <a class="btn btn--primary btn--shiny btn--sm header__cta" data-href="BOOKING_URL" href="https://n689385.yclients.com/company/651411/personal/select-services" target="_blank" rel="noopener">Записаться</a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню"><span></span></button>
   </div>
 </header>
@@ -692,7 +735,7 @@ body{background:var(--bg);color:var(--text)}
     <h1 id="h1">Стиль не зависит от того, <em>кто держит ножницы</em></h1>
     <p class="hero__sub">Мастера меняются, стиль остаётся</p>
     <div class="hero__cta">
-      <a class="btn btn--primary btn--xl" data-href="BOOKING_URL" href="https://n689385.yclients.com/company/651411/personal/select-services" target="_blank" rel="noopener">Записаться онлайн</a>
+      <a class="btn btn--primary btn--shiny btn--xl" data-href="BOOKING_URL" href="https://n689385.yclients.com/company/651411/personal/select-services" target="_blank" rel="noopener">Записаться онлайн</a>
       <a class="btn btn--ghost btn--xl" href="#services">Цены</a>
     </div>
     <div class="hero__meta">
@@ -740,7 +783,7 @@ body{background:var(--bg);color:var(--text)}
 <div class="card price"><h3>Ваксинг (нос, уши, межбровка), 1 зона</h3><div class="price__row"><span class="price__sum">400<small>₽</small></span></div></div>
 </div></div>
     <div class="services__cta">
-      <a class="btn btn--primary" data-href="BOOKING_URL" href="https://n689385.yclients.com/company/651411/personal/select-services" target="_blank" rel="noopener">Записаться</a>
+      <a class="btn btn--primary btn--shiny" data-href="BOOKING_URL" href="https://n689385.yclients.com/company/651411/personal/select-services" target="_blank" rel="noopener">Записаться</a>
       <p>Услугу, мастера и время можно выбрать сразу в онлайн-записи</p>
     </div>
   </div>
@@ -803,7 +846,7 @@ body{background:var(--bg);color:var(--text)}
         <p>К нам приходят за стрижкой и разговорами по душам, а ещё за королевским бритьём, бородой и детскими стрижками: мастер, кресло и хороший инструмент у нас есть, остальное уладим</p>
         <p class="about__slogan">Стелим стильно, стрижём круто, бреем опасно</p>
         <p class="about__see">Увидимся в кресле…</p>
-        <a class="btn btn--primary" data-href="BOOKING_URL" href="https://n689385.yclients.com/company/651411/personal/select-services" target="_blank" rel="noopener">Записаться</a>
+        <a class="btn btn--primary btn--shiny" data-href="BOOKING_URL" href="https://n689385.yclients.com/company/651411/personal/select-services" target="_blank" rel="noopener">Записаться</a>
       </div>
       <div class="perks">
         <div class="card perk">
@@ -956,7 +999,7 @@ body{background:var(--bg);color:var(--text)}
     </div>
     <div class="contacts">
       <div class="card contact-card" style="transform:none">
-        <a class="btn btn--primary btn--xl" data-href="BOOKING_URL" href="https://n689385.yclients.com/company/651411/personal/select-services" target="_blank" rel="noopener">Записаться онлайн</a>
+        <a class="btn btn--primary btn--shiny btn--xl" data-href="BOOKING_URL" href="https://n689385.yclients.com/company/651411/personal/select-services" target="_blank" rel="noopener">Записаться онлайн</a>
         <ul class="cinfo">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><div><b>Адрес</b><span class="v" data-cfg="ADDRESS">г. Калининград, ул. Красносельская, 65</span></div></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><div><b>Телефон</b><a data-tel href="tel:+79814670105" data-cfg="PHONE_DISPLAY">27-01-05</a></div></li>
@@ -991,7 +1034,7 @@ body{background:var(--bg);color:var(--text)}
 
 <!-- Плавающая панель записи (только телефон) -->
 <div class="dock" id="dock">
-  <a class="btn btn--primary" data-href="BOOKING_URL" href="https://n689385.yclients.com/company/651411/personal/select-services" target="_blank" rel="noopener">Записаться</a>
+  <a class="btn btn--primary btn--shiny" data-href="BOOKING_URL" href="https://n689385.yclients.com/company/651411/personal/select-services" target="_blank" rel="noopener">Записаться</a>
   <a class="dock__call" data-tel href="tel:+79814670105" aria-label="Позвонить в барбершоп"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></a>
 </div>
 
