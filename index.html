@@ -709,6 +709,12 @@ body{background:var(--bg);color:var(--text)}
 .wvid.sound::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E8E3DA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5 6 9H2v6h4l5 4z'/><path d='M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14'/></svg>")}
 }
 @media (max-width:900px){.works-vids{display:none}}
+/* прайс: плитки не сливаются: больше отступы, мягче тень, меньше подъём при наведении */
+.tabs{margin-bottom:28px}
+.price-grid{gap:22px;align-items:stretch}
+.price-grid .card.price{box-shadow:0 1px 2px rgba(0,0,0,.35),0 4px 10px rgba(0,0,0,.28)}
+.price-grid .card.price:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(0,0,0,.4),0 8px 16px rgba(0,0,0,.32)}
+@media (max-width:720px){.price-grid{gap:16px}.tabs{margin-bottom:22px}}
 </style>
 </head>
 <body>
